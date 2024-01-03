@@ -9,16 +9,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active me-3 " aria-current="page" href="index.php">Inicio</a>
+            <a class="nav-link active me-3 " aria-current="page" href="index_en.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link me-3" href="#rooms">Habitaciones</a>
+            <a class="nav-link me-3" href="#rooms">Rooms</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link me-3" href="#map">Ubicación</a>
+            <a class="nav-link me-3" href="#map">Location</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link me-3" href="preguntas-frecuentes.php">Preguntas Frecuentes</a>
+            <a class="nav-link me-3" href="preguntas-frecuentes.php">Frequent Questions</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -26,8 +26,8 @@
                 <i class="bi bi-globe"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end max-height-150 overflow-auto" aria-labelledby="languageDropdown">
-                <li><a class="dropdown-item" href="index.php">Español</a></li>
-                <li><a class="dropdown-item" href="index_en.php">Ingles</a></li>
+                <li><a class="dropdown-item" href="index.php">Spanish</a></li>
+                <li><a class="dropdown-item" href="index_en.php">English</a></li>
             </ul>
         </li>
         
