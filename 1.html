@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Opiniones y Valoraciones</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .review-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .review-form {
+            margin-top: 20px;
+        }
+
+        .star-container {
+            display: inline-block;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .star {
+            color: #ddd;
+            padding: 5px;
+            margin: 0 2px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .star:hover {
+            color: #ffc107;
+        }
+
+        .star.selected {
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Opiniones existentes -->
+    <div class="review-container">
+        <h4>Usuario 1</h4>
+        <p>Excelente aplicación. Funciona perfectamente y es fácil de usar.</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <div class="review-container">
+        <h4>Usuario 2</h4>
+        <p>Muy útil. Me ha ayudado mucho en mis tareas diarias.</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <!-- Formulario para agregar nueva opinión -->
+    <div class="review-form">
+        <h4>Deja tu opinión</h4>
+        <form>
+            <div class="mb-3">
+                <label for="userName" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="userName" required>
+            </div>
+            <div class="mb-3">
+                <label for="userReview" class="form-label">Comentario</label>
+                <textarea class="form-control" id="userReview" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="userRating" class="form-label">Valoración</label>
+                <div class="star-container" id="starContainer">
+                    <span class="star" onclick="setRating(1)">&#9733;</span>
+                    <span class="star" onclick="setRating(2)">&#9733;</span>
+                    <span class="star" onclick="setRating(3)">&#9733;</span>
+                    <span class="star" onclick="setRating(4)">&#9733;</span>
+                    <span class="star" onclick="setRating(5)">&#9733;</span>
+                </div>
+                <input type="hidden" id="userRating" name="userRating" value="0" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="agregarOpinion()">Enviar opinión</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function setRating(rating) {
+        document.getElementById('userRating').value = rating;
+
+        // Actualizar el color de las estrellas según la valoración seleccionada
+        var stars = document.querySelectorAll('.star');
+        for (var i = 0; i < stars.length; i++) {
+            if (i < rating) {
+                stars[i].classList.add('selected');
+            } else {
+                stars[i].classList.remove('selected');
+            }
+        }
+    }
+
+    function agregarOpinion() {
+        var nombre = document.getElementById('userName').value;
+        var comentario = document.getElementById('userReview').value;
+        var valoracion = document.getElementById('userRating').value;
+
+        // Crear nuevo contenedor de opinión
+        var nuevoContenedor = document.createElement('div');
+        nuevoContenedor.className = 'review-container';
+
+        // Agregar nombre y comentario
+        var nuevoNombre = document.createElement('h4');
+        nuevoNombre.textContent = nombre;
+        nuevoContenedor.appendChild(nuevoNombre);
+
+        var nuevoComentario = document.createElement('p');
+        nuevoComentario.textContent = comentario;
+        nuevoContenedor.appendChild(nuevoComentario);
+
+        // Agregar valoración
+        var nuevaValoracion = document.createElement('div');
+        nuevaValoracion.className = 'rating';
+        nuevaValoracion.textContent = '⭐'.repeat(parseInt(valoracion));
+        nuevoContenedor.appendChild(nuevaValoracion);
+
+        // Insertar el nuevo contenedor antes del formulario
+        var formulario = document.querySelector('.review-form');
+        formulario.parentNode.insertBefore(nuevoContenedor, formulario);
+    }
+</script>
+</body>
+</html>
